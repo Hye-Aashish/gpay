@@ -1,0 +1,9 @@
+{
+  "name": "play-store-demo",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "node index.js"
+  }
+}
