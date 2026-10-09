@@ -282,12 +282,3 @@ document.querySelectorAll('[data-icon]').forEach((element) => {element.innerHTML
 $('#essentials').innerHTML = ['youtube','telegram','netflix','pinterest','maps','todoist'].map((id) => essentialCard(apps.find((app) => app.id === id))).join('');
 render();
 }
-
-if (typeof module !== 'undefined' && module.exports) {
-  module.exports = (req, res) => {
-    if (res && res.writeHead) {
-      res.writeHead(200, { 'Content-Type': 'text/plain' });
-      res.end('OK');
-    }
-  };
-}
