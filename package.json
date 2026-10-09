@@ -4,6 +4,7 @@
   "private": true,
   "description": "A Play Store inspired app discovery page with instant search.",
   "scripts": {
+    "build": "echo 'Static build ready'",
     "start": "node server.js",
     "dev": "node server.js"
   }
