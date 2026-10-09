@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 520" preserveAspectRatio="xMidYMid slice">
+ <defs>
+  <linearGradient id="sky" x2="0" y2="1"><stop stop-color="#142d32"/><stop offset=".5" stop-color="#61796b"/><stop offset="1" stop-color="#ccd4a3"/></linearGradient>
+  <linearGradient id="sunset" x2="0" y2="1"><stop stop-color="#d1d7ac" stop-opacity=".65"/><stop offset="1" stop-color="#628978" stop-opacity="0"/></linearGradient>
+  <linearGradient id="river" x2=".3" y2="1"><stop stop-color="#94b6a5"/><stop offset="1" stop-color="#204c43"/></linearGradient>
+  <linearGradient id="shade"><stop stop-color="#092d25" stop-opacity=".98"/><stop offset=".6" stop-color="#123c30" stop-opacity=".75"/><stop offset="1" stop-color="#173f31" stop-opacity=".1"/></linearGradient>
+  <radialGradient id="glow"><stop stop-color="#dfe1a5" stop-opacity=".48"/><stop offset="1" stop-color="#dfe1a5" stop-opacity="0"/></radialGradient>
+  <filter id="grain"><feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="3" stitchTiles="stitch"/><feColorMatrix type="saturate" values="0"/><feComponentTransfer><feFuncA type="linear" slope=".085"/></feComponentTransfer><feBlend in="SourceGraphic" mode="soft-light"/></filter>
+  <g id="pine"><path d="M0 0-15 32h8l-17 29h12l-20 32H-3v19h6V93h29L12 61h12L7 32h8z" fill="currentColor"/></g>
+ </defs>
+ <g filter="url(#grain)">
+ <path fill="url(#sky)" d="M0 0h1000v520H0z"/>
+ <ellipse cx="800" cy="170" rx="280" ry="180" fill="url(#glow)"/>
+ <circle cx="812" cy="142" r="31" fill="#dedfba" opacity=".6"/>
+ <path fill="#556f66" d="m0 240 130-73 80 23 150-60 126 84 100-13 167-54 63 37 64-24 120 78v282H0z"/>
+ <path fill="#416559" d="m0 273 93-33 111 35 79-34 142 25 148-78 153 70 131-56 143 72v246H0z"/>
+ <path fill="url(#sunset)" d="M0 237h1000v125H0z"/>
+ <path fill="#2c584a" d="m0 325 145-37 135 18 200-34 142 26 118-12 260 52v182H0z"/>
+ <path fill="#234e40" d="m0 346 165-31 163 52 184-38 174 9 150-17 164 25v174H0z"/>
+ <path fill="url(#river)" d="M741 295c-154 42 132 61-62 94-170 30-62 92-15 131h166c-73-45-156-69-37-109 160-52-117-72-26-116z"/>
+ <g color="#254f42" opacity=".7"><use href="#pine" transform="translate(965 215) scale(.95)"/><use href="#pine" transform="translate(924 228) scale(.7)"/><use href="#pine" transform="translate(869 255) scale(.5)"/><use href="#pine" transform="translate(613 256) scale(.55)"/><use href="#pine" transform="translate(572 237) scale(.7)"/><use href="#pine" transform="translate(550 256) scale(.6)"/></g>
+ <g color="#143e30"><use href="#pine" transform="translate(999 160) scale(2.7)"/><use href="#pine" transform="translate(925 239) scale(1.7)"/><use href="#pine" transform="translate(891 277) scale(1.4)"/><use href="#pine" transform="translate(843 292) scale(1.2)"/><use href="#pine" transform="translate(518 248) scale(1.6)"/><use href="#pine" transform="translate(567 300) scale(1.3)"/></g>
+ <path fill="#123c2e" d="m0 390 106-25 204 10 142 70 65 75H0zm1000-22-92 39-97 73-26 40h215z"/>
+ <g color="#0d3226"><use href="#pine" transform="translate(975 285) scale(2.5)"/><use href="#pine" transform="translate(913 357) scale(1.5)"/><use href="#pine" transform="translate(501 325) scale(1.9)"/><use href="#pine" transform="translate(427 353) scale(2.1)"/><use href="#pine" transform="translate(344 314) scale(2.6)"/><use href="#pine" transform="translate(50 245) scale(3)"/></g>
+ <path fill="url(#shade)" d="M0 0h1000v520H0z"/>
+ </g>
+</svg>

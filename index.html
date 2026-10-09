@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#ffffff" />
+    <meta name="description" content="Discover your next favorite app. A Play Store inspired demo with instant search and category filters." />
+    <title>Google Play · Discover your next favorite</title>
+    <link rel="icon" type="image/svg+xml" href="./assets/play.svg" />
+    <link rel="stylesheet" href="./styles.css" />
+    <link rel="stylesheet" href="./mobile.css" media="(max-width: 600px)" />
+    <script src="./app.js" defer></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to apps</a>
+    <header class="site-header">
+      <div class="header-inner">
+        <a class="brand" href="./" aria-label="Google Play home">
+          <img src="./assets/play.svg" width="36" height="39" alt="" />
+          <span>Google Play</span>
+        </a>
+        <nav class="primary-nav" aria-label="Store">
+          <button class="nav-link" data-store="games"><span class="nav-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M7 7h10c3 0 4 3 5 9 .5 3-2 4-4 2l-3-3H9l-3 3c-2 2-4.5 1-4-2 1-6 2-9 5-9Z"/><path d="M6 10v4m-2-2h4M16 11h.01M19 13h.01" stroke-linecap="round"/></svg></span><span>Games</span></button>
+          <button class="nav-link active" data-store="apps" aria-current="page"><span class="nav-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="3" width="7" height="7" rx="2"/><rect x="14" y="3" width="7" height="7" rx="2"/><rect x="3" y="14" width="7" height="7" rx="2"/><rect x="14" y="14" width="7" height="7" rx="2"/></svg></span><span>Apps</span></button>
+          <button class="nav-link" data-store="kids"><span class="nav-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="m12 3 2.8 5.7 6.2.9-4.5 4.4 1.1 6.2-5.6-3-5.6 3 1.1-6.2L3 9.6l6.2-.9Z" stroke-linejoin="round"/></svg></span><span>Kids</span></button>
+        </nav>
+        <form class="search-box" role="search" id="search-form">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.8"/><path d="m16 16 4.5 4.5"/></svg>
+          <input id="search-input" type="search" placeholder="Search for apps & games" autocomplete="off" aria-label="Search apps and games" aria-controls="catalog" />
+          <button id="clear-search" class="icon-button clear-search" type="button" aria-label="Clear search" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"/></svg></button>
+          <kbd class="search-shortcut" aria-hidden="true">/</kbd>
+        </form>
+        <div class="header-actions">
+          <button class="icon-button help-button" id="help-button" aria-label="About this store"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M9.5 9a2.5 2.5 0 0 1 5 0c0 1.7-2.5 2-2.5 3.8"/><path d="M12 16h.01" stroke-width="2.5" stroke-linecap="round"/></svg></button>
+          <button class="avatar" id="library-button" aria-label="Open my app library" title="My library">A<span></span></button>
+        </div>
+      </div>
+    </header>
+
+    <main id="main" class="main-container">
+      <div class="browse-bar">
+        <nav class="browse-tabs" aria-label="Browse apps">
+          <button class="browse-tab active" data-view="for-you" aria-current="page">For you</button>
+          <button class="browse-tab" data-view="top-charts">Top charts</button>
+          <button class="browse-tab" data-view="categories">Categories</button>
+        </nav>
+        <div class="device-filters" role="group" aria-label="Device type">
+          <button class="device-chip active" data-device="phone" aria-pressed="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="6.5" y="3" width="11" height="18" rx="2"/><path d="M10 17.5h4"/></svg>Phone</button>
+          <button class="device-chip" data-device="tablet" aria-pressed="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M10 17.5h4"/></svg>Tablet</button>
+          <button class="device-chip" data-device="tv" aria-pressed="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="4" width="18" height="13" rx="2"/><path d="M8 21h8m-4-4v4"/></svg>TV</button>
+          <button class="device-chip" data-device="chromebook" aria-pressed="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="5" y="4" width="14" height="12" rx="1.5"/><path d="m5 16-3 4h20l-3-4"/></svg>Chromebook</button>
+        </div>
+      </div>
+
+      <section class="discovery-intro" id="discovery-intro">
+        <div><div class="eyebrow">A WORLD OF POSSIBILITIES</div><h1>Discover your next favorite.</h1><p>Little things that make your every day a little better.</p></div>
+        <span class="intro-note"><span class="green-dot"></span> Curated for you</span>
+      </section>
+
+      <section class="featured-grid" id="featured" aria-label="Featured apps">
+        <button class="feature-card music-feature" data-app="spotify">
+          <div class="feature-topline"><span class="feature-badge"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m12 2 2.9 6 6.6 1-4.8 4.7 1.1 6.6-5.8-3.1-5.8 3.1 1.1-6.6L2.5 9l6.6-1z"/></svg>EDITOR'S PICK</span><span class="feature-number">01 / 02</span></div>
+          <div class="music-copy"><h2>A little music.<br>A whole new mood.</h2><p>Find the soundtrack to your kind of day.</p><span class="feature-cta">Find your rhythm <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M4 12h16m-6-6 6 6-6 6"/></svg></span></div>
+          <div class="feature-app"><div class="feature-app-icon" data-icon="spotify"></div><div><strong>Spotify</strong><span>Music & podcasts · 4.4 ★</span></div><span class="feature-app-label">Free</span></div>
+          <div class="sound-wave" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+        </button>
+        <button class="feature-card collection-feature" id="collection-button">
+          <span class="collection-label">THE EVERYDAY EDIT</span>
+          <h2>Make room<br>for more you.</h2>
+          <p>A little focus. A little creativity.<br>A lot of possibility.</p>
+          <span class="collection-link">Explore the collection <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M4 12h16m-6-6 6 6-6 6"/></svg></span>
+          <div class="floating-app floating-notion" data-icon="notion" aria-hidden="true"></div>
+          <div class="floating-app floating-canva" data-icon="canva" aria-hidden="true"></div>
+          <div class="floating-app floating-headspace" data-icon="headspace" aria-hidden="true"></div>
+          <div class="collection-spark spark-one" aria-hidden="true">✦</div><div class="collection-spark spark-two" aria-hidden="true">✧</div>
+        </button>
+      </section>
+
+      <p class="mobile-swipe-hint" id="swipe-hint"><span>Swipe to discover more</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M4 12h16m-6-6 6 6-6 6"/></svg></p>
+
+      <div class="category-bar" id="category-bar" role="group" aria-label="App categories">
+        <button class="category-chip active" data-category="all" aria-pressed="true">All apps</button>
+        <button class="category-chip" data-category="Productivity" aria-pressed="false">Productivity</button>
+        <button class="category-chip" data-category="Entertainment" aria-pressed="false">Entertainment</button>
+        <button class="category-chip" data-category="Social" aria-pressed="false">Social</button>
+        <button class="category-chip" data-category="Creativity" aria-pressed="false">Creativity</button>
+        <button class="category-chip" data-category="Education" aria-pressed="false">Education</button>
+        <button class="category-chip" data-category="Lifestyle" aria-pressed="false">Lifestyle</button>
+      </div>
+
+      <section class="catalog-section" aria-labelledby="catalog-title">
+        <div class="section-heading"><div><h2 id="catalog-title">Recommended for you</h2><p id="catalog-subtitle">Good finds, just a tap away.</p></div><button class="text-button" id="see-all">See all <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M4 12h16m-6-6 6 6-6 6"/></svg></button></div>
+        <p id="search-status" class="sr-only" role="status" aria-live="polite" aria-atomic="true"></p>
+        <div class="app-grid" id="catalog"></div>
+        <div class="empty-state" id="empty-state" hidden><div class="empty-icon"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="21" cy="21" r="13"/><path d="m31 31 10 10M16 21h10"/></svg></div><h3>No apps found</h3><p id="empty-message">Try another name or explore a different category.</p><button class="primary-button" id="reset-filters">Explore all apps</button></div>
+      </section>
+
+      <section class="everyday-section" id="everyday-section" aria-labelledby="everyday-title">
+        <div class="section-heading"><div><h2 id="everyday-title">Small apps. Big possibilities.</h2><p>A fresh perspective on your everyday.</p></div><span class="editorial-tag">HANDPICKED COLLECTIONS</span></div>
+        <div class="editorial-grid">
+          <button class="editorial-card editorial-notion" data-app="notion"><span class="editorial-label">LESS CHAOS, MORE CLARITY</span><h3>Your ideas.<br>All in one place.</h3><div class="notion-art" aria-hidden="true"><div class="note-paper"><span class="paper-title">Today's little wins</span><span>✓ &nbsp; Make something great</span><span>✓ &nbsp; Take a little break</span><span>◻ &nbsp; Start something new</span><div class="paper-line"></div></div><div class="editorial-float" data-icon="notion"></div></div><span class="editorial-bottom">Get organized with Notion <span>↗</span></span></button>
+          <button class="editorial-card editorial-duo" data-app="duolingo"><span class="editorial-label">A LITTLE EVERY DAY</span><h3>New language.<br>New possibilities.</h3><div class="duo-art" aria-hidden="true"><span class="language-bubble bubble-hola">¡Hola!</span><div class="duo-mascot" data-icon="duolingo"></div><span class="language-bubble bubble-bonjour">Bonjour!</span><span class="duo-star">✦</span></div><span class="editorial-bottom">Learn something with Duolingo <span>↗</span></span></button>
+          <button class="editorial-card editorial-canva" data-app="canva"><span class="editorial-label">LET YOUR IDEAS PLAY</span><h3>A creative spark.<br>Endless possibilities.</h3><div class="canva-art" aria-hidden="true"><div class="design-poster"><span>MAKE<br><i>good</i><br>THINGS.</span><div class="poster-flower">✳</div></div><div class="design-palette"><i></i><i></i><i></i><i></i></div><div class="editorial-float" data-icon="canva"></div></div><span class="editorial-bottom">Create your next thing with Canva <span>↗</span></span></button>
+        </div>
+      </section>
+
+      <section class="essentials-section" id="essentials-section" aria-labelledby="essentials-title"><div class="section-heading"><div><h2 id="essentials-title">Your everyday essentials</h2><p>The apps you'll keep coming back to.</p></div></div><div class="essential-grid" id="essentials"></div></section>
+
+      <aside class="store-note"><div class="store-note-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="m12 3 8 3v6c0 5-8 9-8 9s-8-4-8-9V6z"/><path d="m8.5 12 2.5 2.5 4.5-5"/></svg></div><div><strong>Your next favorite is out there.</strong><p>Explore a curated collection of apps for work, play, and everything in between.</p></div><span class="note-spark" aria-hidden="true">✧</span></aside>
+    </main>
+
+    <footer class="site-footer"><div><a class="footer-brand" href="./"><img src="./assets/play.svg" width="22" height="24" alt="" />Google Play</a><span>A little discovery goes a long way.</span></div><div class="footer-meta"><span>Play Store inspired demo</span><span class="footer-country">India · English</span></div></footer>
+
+    <dialog id="app-dialog" class="app-dialog" aria-labelledby="dialog-title"><button class="icon-button dialog-close" id="close-dialog" aria-label="Close app details"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"/></svg></button><div id="dialog-content"></div></dialog>
+    <dialog id="info-dialog" class="info-dialog" aria-labelledby="info-title"><button class="icon-button dialog-close" id="close-info" aria-label="Close"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"/></svg></button><div id="info-content"></div></dialog>
+    <div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+  </body>
+</html>

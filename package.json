@@ -1,0 +1,10 @@
+{
+  "name": "play-store-demo",
+  "version": "1.0.0",
+  "private": true,
+  "description": "A Play Store inspired app discovery page with instant search.",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  }
+}
