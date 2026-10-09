@@ -229,20 +229,21 @@ function closeOnBackdrop(event) {
   if (event.clientX < bounds.left || event.clientX > bounds.right || event.clientY < bounds.top || event.clientY > bounds.bottom) event.currentTarget.close();
 }
 
-searchInput.addEventListener('input',() => {state.query = searchInput.value; render();});
-$('#search-form').addEventListener('submit',(event) => {event.preventDefault();state.query = searchInput.value;render();});
-$('#clear-search').addEventListener('click',() => {searchInput.value = '';state.query = '';render();searchInput.focus();});
-$('#reset-filters').addEventListener('click',resetFilters);
-$('#see-all').addEventListener('click',() => {state.showAll = true;render();$('#catalog-title').scrollIntoView({block:'start'});});
-$('#collection-button').addEventListener('click',() => {state.collection = true;state.showAll = true;render();$('#catalog-title').scrollIntoView({block:'start'});});
-$('#close-dialog').addEventListener('click',() => appDialog.close());
-$('#close-info').addEventListener('click',() => infoDialog.close());
-appDialog.addEventListener('click',closeOnBackdrop);
-infoDialog.addEventListener('click',closeOnBackdrop);
-$('#library-button').addEventListener('click',openLibrary);
-$('#help-button').addEventListener('click',() => {
-  $('#info-content').innerHTML = '<h2 id="info-title">A little discovery goes a long way.</h2><p>Explore this Play Store inspired demo. Search by app name, category, or interest, and filter by device to find something for you.</p><p>Press <kbd>/</kbd> to jump to search. Press <kbd>Esc</kbd> in the search field to clear it. Open any app to see more and save it to your local library.</p><p>The catalog contains sample data. Ratings, download counts, and sizes are illustrative; this demo does not install apps.</p>';
-  infoDialog.showModal();
+searchInput?.addEventListener('input',() => {state.query = searchInput.value; render();});
+$('#search-form')?.addEventListener('submit',(event) => {event.preventDefault();state.query = searchInput?.value || '';render();});
+$('#clear-search')?.addEventListener('click',() => {if (searchInput) searchInput.value = '';state.query = '';render();searchInput?.focus();});
+$('#reset-filters')?.addEventListener('click',resetFilters);
+$('#see-all')?.addEventListener('click',() => {state.showAll = true;render();$('#catalog-title')?.scrollIntoView({block:'start'});});
+$('#collection-button')?.addEventListener('click',() => {state.collection = true;state.showAll = true;render();$('#catalog-title')?.scrollIntoView({block:'start'});});
+$('#close-dialog')?.addEventListener('click',() => appDialog?.close());
+$('#close-info')?.addEventListener('click',() => infoDialog?.close());
+appDialog?.addEventListener('click',closeOnBackdrop);
+infoDialog?.addEventListener('click',closeOnBackdrop);
+$('#library-button')?.addEventListener('click',openLibrary);
+$('#help-button')?.addEventListener('click',() => {
+  const content = $('#info-content');
+  if (content) content.innerHTML = '<h2 id="info-title">A little discovery goes a long way.</h2><p>Explore this Play Store inspired demo. Search by app name, category, or interest, and filter by device to find something for you.</p><p>Press <kbd>/</kbd> to jump to search. Press <kbd>Esc</kbd> in the search field to clear it. Open any app to see more and save it to your local library.</p><p>The catalog contains sample data. Ratings, download counts, and sizes are illustrative; this demo does not install apps.</p>';
+  infoDialog?.showModal();
 });
 
 document.addEventListener('click',(event) => {

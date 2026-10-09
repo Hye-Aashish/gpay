@@ -32,7 +32,7 @@ const handler = (req, res) => {
       'Content-Type': 'text/html; charset=utf-8',
       'Cache-Control': 'public, max-age=3600'
     });
-    return res.end(htmlContent || getHtml());
+    return res.end(getHtml());
   }
 
   // Prevent path traversal
