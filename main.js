@@ -54,6 +54,7 @@ const apps = [
   {id:'minecraft',name:'Minecraft',publisher:'Mojang',category:'Adventure',rating:4.5,downloads:'50M+',size:'184 MB',tint:'#edf2e0',devices:['phone','tablet','chromebook'],game:true,kids:true,aliases:'building blocks creative games माइनक्राफ्ट गेम',description:'Build a world of your own. Explore, create, and discover adventures in a place where your imagination sets the limits.'},
 ];
 
+if (typeof window !== 'undefined' && typeof document !== 'undefined') {
 const state = {query:'',category:'all',store:'apps',device:'phone',view:'for-you',showAll:false,collection:false};
 const $ = (selector) => document.querySelector(selector);
 const searchInput = $('#search-input');
@@ -280,3 +281,13 @@ document.addEventListener('keydown',(event) => {
 document.querySelectorAll('[data-icon]').forEach((element) => {element.innerHTML = icon(element.dataset.icon);});
 $('#essentials').innerHTML = ['youtube','telegram','netflix','pinterest','maps','todoist'].map((id) => essentialCard(apps.find((app) => app.id === id))).join('');
 render();
+}
+
+if (typeof module !== 'undefined' && module.exports) {
+  module.exports = (req, res) => {
+    if (res && res.writeHead) {
+      res.writeHead(200, { 'Content-Type': 'text/plain' });
+      res.end('OK');
+    }
+  };
+}
