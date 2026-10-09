@@ -2,14 +2,19 @@ const fs = require('fs');
 const path = require('path');
 const http = require('http');
 
-let htmlContent = '';
-try {
-  htmlContent = fs.readFileSync(path.join(__dirname, 'index.html'), 'utf8');
-} catch {
+function getHtml() {
   try {
-    htmlContent = fs.readFileSync(path.join(process.cwd(), 'index.html'), 'utf8');
-  } catch {}
+    return fs.readFileSync(path.join(__dirname, 'index.html'), 'utf8');
+  } catch {
+    try {
+      return fs.readFileSync(path.join(process.cwd(), 'index.html'), 'utf8');
+    } catch {
+      return '';
+    }
+  }
 }
+
+let htmlContent = getHtml();
 
 const mimeTypes = {
   '.html': 'text/html; charset=utf-8',
@@ -27,7 +32,7 @@ const handler = (req, res) => {
       'Content-Type': 'text/html; charset=utf-8',
       'Cache-Control': 'public, max-age=3600'
     });
-    return res.end(htmlContent);
+    return res.end(htmlContent || getHtml());
   }
 
   // Prevent path traversal
@@ -55,7 +60,7 @@ const handler = (req, res) => {
     'Content-Type': 'text/html; charset=utf-8',
     'Cache-Control': 'public, max-age=3600'
   });
-  res.end(htmlContent);
+  res.end(htmlContent || getHtml());
 };
 
 module.exports = handler;
