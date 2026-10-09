@@ -2,6 +2,15 @@ const fs = require('fs');
 const path = require('path');
 const http = require('http');
 
+let htmlContent = '';
+try {
+  htmlContent = fs.readFileSync(path.join(__dirname, 'index.html'), 'utf8');
+} catch {
+  try {
+    htmlContent = fs.readFileSync(path.join(process.cwd(), 'index.html'), 'utf8');
+  } catch {}
+}
+
 const mimeTypes = {
   '.html': 'text/html; charset=utf-8',
   '.css': 'text/css; charset=utf-8',
@@ -13,37 +22,45 @@ const mimeTypes = {
 
 const handler = (req, res) => {
   let pathname = (req.url || '/').split('?')[0];
-  if (pathname === '/' || pathname === '') {
-    pathname = '/index.html';
+  if (pathname === '/' || pathname === '' || pathname === '/index.html') {
+    res.writeHead(200, {
+      'Content-Type': 'text/html; charset=utf-8',
+      'Cache-Control': 'public, max-age=3600'
+    });
+    return res.end(htmlContent);
   }
 
   // Prevent path traversal
   const safePath = path.normalize(pathname).replace(/^(\.\.[\/\\])+/, '');
-  const filePath = path.join(__dirname, safePath);
+  const locations = [
+    path.join(__dirname, safePath),
+    path.join(process.cwd(), safePath)
+  ];
 
-  if (fs.existsSync(filePath) && fs.statSync(filePath).isFile()) {
-    const ext = path.extname(filePath).toLowerCase();
-    res.writeHead(200, {
-      'Content-Type': mimeTypes[ext] || 'application/octet-stream',
-      'Cache-Control': 'public, max-age=3600'
-    });
-    fs.createReadStream(filePath).pipe(res);
-  } else {
-    // Fallback to index.html
-    const indexPath = path.join(__dirname, 'index.html');
-    if (fs.existsSync(indexPath)) {
-      res.writeHead(200, { 'Content-Type': 'text/html; charset=utf-8' });
-      fs.createReadStream(indexPath).pipe(res);
-    } else {
-      res.writeHead(404, { 'Content-Type': 'text/plain' });
-      res.end('Not Found');
-    }
+  for (const filePath of locations) {
+    try {
+      if (fs.existsSync(filePath) && fs.statSync(filePath).isFile()) {
+        const ext = path.extname(filePath).toLowerCase();
+        res.writeHead(200, {
+          'Content-Type': mimeTypes[ext] || 'application/octet-stream',
+          'Cache-Control': 'public, max-age=3600'
+        });
+        return fs.createReadStream(filePath).pipe(res);
+      }
+    } catch {}
   }
+
+  // Default fallback to index.html
+  res.writeHead(200, {
+    'Content-Type': 'text/html; charset=utf-8',
+    'Cache-Control': 'public, max-age=3600'
+  });
+  res.end(htmlContent);
 };
 
 module.exports = handler;
 
-// If executed directly (e.g., node index.js or npm start)
+// Local development
 if (require.main === module) {
   const port = Number(process.env.PORT) || 3000;
   const server = http.createServer(handler);
