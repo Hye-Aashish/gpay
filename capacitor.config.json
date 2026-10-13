@@ -1,0 +1,6 @@
+{
+  "appId": "com.gplay.app",
+  "appName": "Google Play",
+  "webDir": "www",
+  "bundledWebRuntime": false
+}

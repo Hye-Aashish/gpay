@@ -21,6 +21,10 @@ const mimeTypes = {
   '.css': 'text/css; charset=utf-8',
   '.js': 'text/javascript; charset=utf-8',
   '.svg': 'image/svg+xml',
+  '.png': 'image/png',
+  '.jpg': 'image/jpeg',
+  '.jpeg': 'image/jpeg',
+  '.webp': 'image/webp',
   '.json': 'application/json; charset=utf-8',
   '.ico': 'image/x-icon'
 };
@@ -30,7 +34,7 @@ const handler = (req, res) => {
   if (pathname === '/' || pathname === '' || pathname === '/index.html') {
     res.writeHead(200, {
       'Content-Type': 'text/html; charset=utf-8',
-      'Cache-Control': 'public, max-age=3600'
+      'Cache-Control': 'no-cache'
     });
     return res.end(getHtml());
   }
@@ -48,7 +52,7 @@ const handler = (req, res) => {
         const ext = path.extname(filePath).toLowerCase();
         res.writeHead(200, {
           'Content-Type': mimeTypes[ext] || 'application/octet-stream',
-          'Cache-Control': 'public, max-age=3600'
+          'Cache-Control': 'no-cache, no-store, must-revalidate'
         });
         return fs.createReadStream(filePath).pipe(res);
       }
@@ -58,9 +62,9 @@ const handler = (req, res) => {
   // Default fallback to index.html
   res.writeHead(200, {
     'Content-Type': 'text/html; charset=utf-8',
-    'Cache-Control': 'public, max-age=3600'
+    'Cache-Control': 'no-cache, no-store, must-revalidate'
   });
-  res.end(htmlContent || getHtml());
+  res.end(getHtml());
 };
 
 module.exports = handler;
