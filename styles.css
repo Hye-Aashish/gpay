@@ -578,7 +578,19 @@ html, body {
   gap: 15px;
   cursor: pointer;
   padding: 2px 0;
-  transition: opacity 0.15s;
+  transition: opacity 0.15s, transform 0.15s;
+  animation: appItemFadeIn 0.3s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+
+@keyframes appItemFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .app-list-item:active {
